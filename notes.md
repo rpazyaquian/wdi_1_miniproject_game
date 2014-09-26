@@ -1,38 +1,22 @@
 # Mini Project: Character Generator and Game
 
-Right now, I'm thinking of something like this:
+I want to generate a character that I can later use in a game.
 
-* We have a Character object.
-* It has these attributes:
-  * Name (@name).
-  * ~~Role (@role) (i.e. character class).~~
-  * ~~Race (@race).~~
-  * ~~Level (@level).~~
-  * ~~Stats (@stats).~~
-* Actually, no, now that I think about it... I don't want to force any user to conform to a specific set of fields/rules. What if a game has nothing but human characters? Then the Race field is redundant. What if the game doesn't use Roles? Then there's no point in it existing. Maybe I'll leave that all up to the user and make something like this instead:
-  * Name, so you can at least identify a character.
-  * Fields, to hold everything such as Race, Role, Level, Stats. Referring to these fields as `Character.fields[level]` is a lot more annoying than `Character.level`, though...
-* The bulk of the character class will be its methods. What a character/character generator *has* is ultimately less important than what it *does*. It has at LEAST these methods:
-  * You create a new Character by calling Character#new.
-    * Input: mandatory `name:String` parameter, optional `options:Hash` parameter.
-    * Output: a Character object with at least a name.
-    * Calling Character#new with no parameters generates a completely random character with a default ruleset.
-      * e.g. calling Character#new gives you a character of random name, role, race, stats, etc. as defined by the generator.
-    * Calling Character#new with parameters generates the requested character.
-      * e.g. Character.new("Harry", { fields: {etc} }) gives you Harry the Whatever.
-  * Character uses a private method called #generate within #initialize to put together the character using the options parameter.
-    * Input: mandatory `options:Hash` parameter, passed from instantiation method.
-    * Output: Uh...hm. Why do I have this method, again?
-  * Okay, well, let's just start with giving it a name.
+I want to be able to make my own character, i.e. pass stuff in.
 
-I know that I want to at least be able to give a character a name. They do also need some sort of stats or extra fields. I want to be able to say "make this specific character", and also "eh, just give me a random one with these fields and constraints".
+I then want to be able to use that character in a really really simple game.
 
-Let's say that in our options hash, if the value of a hash is an Array, the intent is to choose a random entry in the Array. e.g., if the value of a hash is a range, the intent is to choose a random Fixnum.
+What will a Character object be *doing?*
 
-Actually, you know what? No. You deal with the randomization, all I care about is getting valid fields. And you can have arrays if you want, eg. `{spells: ["Fire", "Elwind", "Arcthunder"]}`.
+A Character object will HAVE:
 
-Okay okay how about this? My character takes a character sheet. The Character sheet is in the format of a YML file. Each YML file must at least contain a name, i.e. `name: Rebecca`. The character is then built from that sheet.
+* A name.
+* Stats.
 
-On a grander scale:
+A Character object will DO:
 
-Each Game has a Ruleset that governs the @stats, @race, @class, etc. of each Character. Each Character belongs to a party. Or something.
+* Attack.
+* Take damage.
+* Heal.
+
+Or something. That works, for now.
