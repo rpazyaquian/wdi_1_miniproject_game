@@ -11,7 +11,7 @@ describe Character do
       expect(@character).to be_a Character
     end
 
-    it "with a mandatory given name" do
+    it "with a given name" do
       expect(@character.name).to eq "Robin"
     end
   end
