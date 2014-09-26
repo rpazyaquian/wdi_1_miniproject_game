@@ -2,27 +2,32 @@ require_relative '../lib/character'
 
 describe Character do
 
-  describe "#new" do
+  before(:all) do
+    fields = {
+      race: "Human",
+      role: "Tactician",
+      level: 1,
+      stats: {
+        :hp => 19,
+        :str => 6,
+        :mag => 5,
+        :skl => 5,
+        :spd => 6,
+        :lck => 4,
+        :def => 6,
+        :res => 4,
+        :mov => 5
+      },
+      spells: [
+        'Arcfire',
+        'Arcthunder',
+        'Arcwind'
+      ]
+    }
+    @character = Character.new("Robin", fields)
+  end
 
-    before(:all) do
-      fields = {
-        race: "Human",
-        role: "Tactician",
-        level: 1,
-        stats: {
-          :hp => 19,
-          :str => 6,
-          :mag => 5,
-          :skl => 5,
-          :spd => 6,
-          :lck => 4,
-          :def => 6,
-          :res => 4,
-          :mov => 5
-        }
-      }
-      @character = Character.new("Robin", fields)
-    end
+  describe "#new" do
 
     it "creates a new character" do
       expect(@character).to be_a Character
@@ -37,4 +42,34 @@ describe Character do
     end
 
   end
+
+  describe "#sheet" do
+
+    it "returns the character's information" do
+      expect(@character.sheet).to eq({
+        name: "Robin",
+        race: "Human",
+        role: "Tactician",
+        level: 1,
+        stats: {
+          :hp => 19,
+          :str => 6,
+          :mag => 5,
+          :skl => 5,
+          :spd => 6,
+          :lck => 4,
+          :def => 6,
+          :res => 4,
+          :mov => 5
+        },
+        spells: [
+          'Arcfire',
+          'Arcthunder',
+          'Arcwind'
+        ]
+      })
+    end
+
+  end
+
 end

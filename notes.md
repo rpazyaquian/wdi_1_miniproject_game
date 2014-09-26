@@ -24,7 +24,14 @@ Right now, I'm thinking of something like this:
     * Input: mandatory `options:Hash` parameter, passed from instantiation method.
     * Output: Uh...hm. Why do I have this method, again?
   * Okay, well, let's just start with giving it a name.
-* I know that I want to at least be able to give a character a name. They do also need some sort of stats or extra fields. I want to be able to say "make this specific character", and also "eh, just give me a random one with these fields and constraints".
+
+I know that I want to at least be able to give a character a name. They do also need some sort of stats or extra fields. I want to be able to say "make this specific character", and also "eh, just give me a random one with these fields and constraints".
+
+Let's say that in our options hash, if the value of a hash is an Array, the intent is to choose a random entry in the Array. e.g., if the value of a hash is a range, the intent is to choose a random Fixnum.
+
+Actually, you know what? No. You deal with the randomization, all I care about is getting valid fields. And you can have arrays if you want, eg. `{spells: ["Fire", "Elwind", "Arcthunder"]}`.
+
+Okay okay how about this? My character takes a character sheet. The Character sheet is in the format of a YML file. Each YML file must at least contain a name, i.e. `name: Rebecca`. The character is then built from that sheet.
 
 On a grander scale:
 
