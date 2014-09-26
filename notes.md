@@ -22,6 +22,8 @@ Right now, I'm thinking of something like this:
       * e.g. Character.new("Harry", { fields: {etc} }) gives you Harry the Whatever.
   * Character uses a private method called #generate within #initialize to put together the character using the options parameter.
     * Input: mandatory `options`:Hash parameter, passed from instantiation method.
+    * Output: Uh...hm. Why do I have this method, again?
+  * Okay, well, let's just start with giving it a name.
 * More to come!
 
 On a grander scale:

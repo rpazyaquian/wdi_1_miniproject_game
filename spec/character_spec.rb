@@ -1,19 +1,19 @@
+require_relative '../lib/character'
+
 describe Character do
 
   describe "#new" do
 
+    before(:all) do
+      @character = Character.new("Robin")
+    end
+
     it "creates a new character" do
-      @character = Character.new
       expect(@character).to be_a Character
+    end
 
-      it "with given input parameters" do
-        @character = Character.new({
-          race: "Human",
-          role: "Wizard",
-
-          })
-      end
-
+    it "with a mandatory given name" do
+      expect(@character.name).to eq "Robin"
     end
 
   end
