@@ -11,7 +11,6 @@ What will a Character object be *doing?*
 A Character object will HAVE:
 
 * A name.
-* Stats.
 
 A Character object will DO:
 
