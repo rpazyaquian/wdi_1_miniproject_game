@@ -14,11 +14,15 @@ Right now, I'm thinking of something like this:
   * Fields, to hold everything such as Race, Role, Level, Stats. Referring to these fields as `Character.fields[level]` is a lot more annoying than `Character.level`, though...
 * The bulk of the character class will be its methods. What a character/character generator *has* is ultimately less important than what it *does*. It has at LEAST these methods:
   * You create a new Character by calling Character#new.
-    * Calling Character#new with no parameters generates a completely random character.
-      * e.g. calling Character#new gives you a character of random name, role, race, stats, etc.
+    * Input: mandatory `name`:String parameter, optional `options`:Hash parameter.
+    * Output: a Character object with at least a name.
+    * Calling Character#new with no parameters generates a completely random character with a default ruleset.
+      * e.g. calling Character#new gives you a character of random name, role, race, stats, etc. as defined by the generator.
     * Calling Character#new with parameters generates the requested character.
-      * e.g. Character.new("Harry", { fields: {etc} }) gives you Harry the Generically Random PC.
-* More will come!
+      * e.g. Character.new("Harry", { fields: {etc} }) gives you Harry the Whatever.
+  * Character uses a private method called #generate within #initialize to put together the character using the options parameter.
+    * Input: mandatory `options`:Hash parameter, passed from instantiation method.
+* More to come!
 
 On a grander scale:
 
