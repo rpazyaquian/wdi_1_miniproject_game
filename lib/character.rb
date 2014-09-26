@@ -1,6 +1,11 @@
 class Character
-  attr_accessor :name
   def initialize(name)
+
+    # Initialization method for Character.
+    # Input: name:String.
+    # Output: character:Character.
+
     @name = name
   end
+
 end
