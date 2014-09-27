@@ -1,6 +1,9 @@
 require 'pry'
 require_relative 'lib/character'
 
-rebecca = Character.new("Rebecca")
+name = ARGV[0]
+job = ARGV[1]
 
-puts rebecca.health
+character = Character.new(name, job)
+
+print "#{character.name} - #{character.job}"

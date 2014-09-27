@@ -1,11 +1,12 @@
 class Character
-  def initialize(name)
+  def initialize(name, job)
 
     # Initialization method for Character.
     # Input: name:String.
     # Output: character:Character.
 
     @name = name
+    @job = job
   end
 
   def name
@@ -15,6 +16,15 @@ class Character
     # Output: String.
 
     @name
+  end
+
+  def job
+
+    # Getter for the character's job.
+    # Input: none (self)
+    # Output: String.
+
+    @job
   end
 
 end
