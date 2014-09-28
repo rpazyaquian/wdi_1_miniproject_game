@@ -6,4 +6,4 @@ Feature: Character inspection
 
     Given "Robin" the "Tactician" is generated
     When the character is inspected
-    Then a list of information should be printed
+    Then it should print "Robin - Tactician\nHP: 19\nStr: 6\nMag: 5\nSkl: 5\nSpd: 6\nLck: 4\nDef: 6\nRes: 4\nMov: 5"

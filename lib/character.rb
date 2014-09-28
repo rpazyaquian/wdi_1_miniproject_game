@@ -5,8 +5,17 @@ class Character
     # Input: name:String.
     # Output: character:Character.
 
-    @name = name
-    @job = job
+    if name.gsub(/\s+/, "").empty? == false
+      @name = name
+    else
+      @name = "Invalid character name."
+    end
+
+    if self.jobs.include?(job.gsub(/\s+/, "").to_sym)
+      @job = job.to_sym
+    else
+      @job = "Job does not exist."
+    end
   end
 
   def name
@@ -25,6 +34,13 @@ class Character
     # Output: String.
 
     @job
+  end
+
+  def jobs
+
+    # Defines valid job choices for a new character.
+    # Input: none (self).
+
   end
 
 end

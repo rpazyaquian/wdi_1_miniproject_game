@@ -37,7 +37,7 @@ Feature: Character generation
     When I submit the info to the generator
     Then it should tell me "the job doesn't exist"
 
-    Example:
+    Examples:
     |        input        |       output        |
     | Robin, Fire Flower  | Job does not exist. |
     | Lucina, Marth Clone | Job does not exist. |
