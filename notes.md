@@ -1,21 +1,7 @@
 # Mini Project: Character Generator and Game
 
-I want to generate a character that I can later use in a game.
+Use Cucumber and RSpec to draw out specifications for the application and units.
 
-I want to be able to make my own character, i.e. pass stuff in.
+Also, actually think about what the application is supposed to do.
 
-I then want to be able to use that character in a really really simple game.
-
-What will a Character object be *doing?*
-
-A Character object will HAVE:
-
-* A name.
-
-A Character object will DO:
-
-* Attack.
-* Take damage.
-* Heal.
-
-Or something. That works, for now.
+At the very least, I want to input a name, choose a class, and get a character with randomly generated stats.
