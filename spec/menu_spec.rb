@@ -76,7 +76,7 @@ describe Menu do
     end
 
     it "invokes actions based on a choice of options" do
-      expect(@menu.choose(:say_hello)).to eq "Hello!"
+      expect(@menu.choose("Say hello")).to eq "Hello!"
     end
 
     it "invokes other menus as actions" do
@@ -90,7 +90,7 @@ describe Menu do
 
       @menu.add(another_menu)
 
-      expect(@menu.choose(:another_menu).choose(:say_goodnight)).to eq 'Goodnight!'
+      expect(@menu.choose('Another menu').choose('Say goodnight')).to eq 'Goodnight!'
     end
 
   end

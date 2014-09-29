@@ -41,13 +41,23 @@ class Menu
 
     # Adds a hash of options to the menu's options.
     # Input: Hash.
-    # Output:
+    # Output: Hash?
 
     @options.merge!(options)
 
     options.each do |key, value|
       @choices[value[:text]] = key
     end
+  end
+
+  def choose(choice)
+
+    # Takes a plaintext option and executes its associated action.
+    # Input: String.
+    # Output: Method.
+
+    @options[@choices[choice]][:action]
+
   end
 
 end
