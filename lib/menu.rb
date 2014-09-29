@@ -56,7 +56,7 @@ class Menu
     # Input: String.
     # Output: Method.
 
-    @options[@choices[choice]][:action]
+    @choices.keys.include?(choice) ? @options[@choices[choice]][:action] : :invalid_option
 
   end
 

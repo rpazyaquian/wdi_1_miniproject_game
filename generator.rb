@@ -1,26 +1,10 @@
 require 'pry'
 require_relative 'lib/character'
 require_relative 'lib/party'
+require_relative 'lib/menu'
 
 # "This menu method is enormous - it would be good to break it up into smaller methods.
 # Possibly a Menu class could be useful here."
-
-top_menu_options = {
-  :create_party => {
-    text: 'Create a party',
-    action: create_party
-  },
-  :create_character => {
-    text: 'Create a character',
-    action: create_character
-  },
-  :exit_generator => {
-    text: 'Exit generator',
-    action: exit_generator
-  }
-}
-
-top_menu = Menu.new(top_menu_options)
 
 # a menu class might not be a bad idea -
 # but what does a menu class look like?
@@ -154,7 +138,7 @@ def menu_options
     if defined?(@party)
       puts "You've already made a party called #{@party.name}."
     else
-      generate_party
+      create_party
     end
   elsif choice == 'c'
     if defined?(@party).nil?
@@ -169,15 +153,38 @@ def menu_options
 
 end
 
-def menu
-  # Top-level menu.
-  # Input: none.
-  # Output: none.
+# def menu
+#   # Top-level menu.
+#   # Input: none.
+#   # Output: none.
 
-  puts "Welcome to my Fire Emblem party generator!"
-  while true
-    menu_options
-  end
-end
+#   puts "Welcome to my Fire Emblem party generator!"
+#   while true
+#     menu_options
+#   end
+# end
 
-menu
+# menu
+
+# binding.pry
+
+top_menu_options = {
+  :create_party => {
+    text: 'Create a party',
+    action: create_party
+  },
+  :create_character => {
+    text: 'Create a character',
+    action: create_character
+  },
+  :exit_generator => {
+    text: 'Exit generator',
+    action: exit_generator
+  }
+}
+
+top_menu = Menu.new(top_menu_options)
+
+puts "Welcome to my Fire Emblem party generator!"
+puts "Choose an option:"
+puts top_menu.choices.keys

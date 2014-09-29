@@ -57,6 +57,13 @@ describe Menu do
     end
   end
 
+  # describe "#prompt" do
+  #   it "prompts the user for a choice" do
+  #     @menu.prompt
+  #     expect
+  #   end
+  # end
+
   describe "#choose" do
 
     before(:all) do
