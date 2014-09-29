@@ -31,11 +31,16 @@ class Menu
 
   def add(option)
     @options.merge!(option)
+    option.each do |option, data|
+      translation = { data[:text] => option }
+      @choices.merge!(translation)
+    end
   end
 
   def translate_string(input)
     @choices[input]
   end
+
 
   def prompt
     option = translate_string(STDIN.gets.chomp)

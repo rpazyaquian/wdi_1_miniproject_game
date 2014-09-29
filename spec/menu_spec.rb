@@ -146,14 +146,16 @@ describe Menu do
         }
       }
 
+      # this test frusrtated me until i realized
+      # i didn't change 'Another menu' to 'Merged menu'
+      # :(
+
+      STDIN.stub(:gets).and_return('Merged menu', 'Say goodbye')
+
       @merged_menu = Menu.new(first_option)
-      # binding.pry
-      expect(@merged_menu.options).to include(:dummy_option)
 
       @merged_menu.add(merged_option)
-      expect(@merged_menu.options).to include(:merged_option)
-
-      binding.pry
+      expect(@merged_menu.prompt).to eq "Goodbye!"
     end
 
   end
