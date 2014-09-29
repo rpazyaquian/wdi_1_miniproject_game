@@ -19,20 +19,33 @@ describe Character do
     it "with the given job" do
       expect(@character.job).to eq :tactician
     end
+
+    it "and with randomized stats" do
+      stats = [
+        :hp,
+        :str,
+        :mag,
+        :skl,
+        :spd,
+        :lck,
+        :def,
+        :res,
+        :mov
+      ]
+      stats.each do |stat|
+        expect(@character.stats).to have_key(stat)
+      end
+    end
   end
 
-  describe "#new", "validation" do
+  describe "#sheet" do
 
     before(:all) do
-      @character = Character.new("\n", :whatever)
+      @character = Character.new("Lucina", :lord)
     end
 
-    it "requires a valid name" do
-      expect(@character.name).to eq :invalid_name
-    end
-
-    it "requires a valid job choice" do
-      expect(@character.job).to eq :invalid_job
+    it "returns a character sheet" do
+      expect(@character.sheet).to be_a String
     end
 
   end

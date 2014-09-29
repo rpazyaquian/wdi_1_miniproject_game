@@ -2,20 +2,14 @@ class Character
   def initialize(name, job)
 
     # Initialization method for Character.
-    # Input: name:String, job:Symbol
-    # Output: character:Character.
+    # Input: String, Symbol
+    # Output: Character.
 
-    if name.gsub(/\s+/, "").empty? == false
-      @name = name
-    else
-      @name = :invalid_name
-    end
+    @name = name
+    @job = job
+    @level = 1
+    @stats = self.roll_stats
 
-    if self.starting_jobs.include?(job)
-      @job = job
-    else
-      @job = :invalid_job
-    end
   end
 
   def name
@@ -63,6 +57,43 @@ class Character
       :thief,
       :troubadour,
     ]
+
+  end
+
+  def stats
+
+    # Character statistics for battle.
+    # Input: none (self).
+    # Output: Hash.
+
+    @stats
+  end
+
+  def roll_stats
+
+    # Rolls starting stats for new character.
+    # Input: none (self).
+    # Output: Hash.
+
+    {
+      :hp => 15,
+      :str => 5,
+      :mag => 5,
+      :skl => 5,
+      :spd => 5,
+      :lck => 5,
+      :def => 5,
+      :res => 5,
+      :mov => 5
+    }
+
+  end
+
+  def sheet
+
+    # Outputs a formatted overview of the character information.
+    # Input: none (self).
+    # Output: String.
 
   end
 
