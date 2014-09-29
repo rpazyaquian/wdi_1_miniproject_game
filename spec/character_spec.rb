@@ -3,7 +3,7 @@ require_relative '../lib/character'
 describe Character do
 
   before(:all) do
-    @character = Character.new("Robin", "Tactician")
+    @character = Character.new("Robin", :tactician)
   end
 
   describe "#new" do
@@ -16,16 +16,16 @@ describe Character do
     end
 
     it "with the given job" do
-      expect(@character.job).to eq "Tactician"
+      expect(@character.job).to eq :tactician
     end
 
     it "requires a valid name" do
-      @character = Character.new("\n", "Tactician")
+      @character = Character.new("\n", :tactician)
       expect(@character.name).to eq "Invalid character name."
     end
 
     it "requires a valid job choice" do
-      @character = Character.new("Lucina", "Marth Clone")
+      @character = Character.new("Lucina", :marth_clone)
       expect(@character.job).to eq "Job does not exist."
     end
 

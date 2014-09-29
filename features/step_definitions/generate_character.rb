@@ -5,7 +5,7 @@ require_relative '../../lib/character'
 # Input:
 Given(/^I have created a character "(.*?)" with job "(.*?)"$/) do |name, job|
   @name = name
-  @job = job
+  @job = job.downcase.strip.gsub(/\s+/, "_").to_sym
 end
 
 # Compute:
@@ -20,7 +20,7 @@ end
 
 Given(/^I have created a character with an invalid "(.*?)"$/) do |name|
   @name = name
-  @job = "Tactician"
+  @job = "Tactician".downcase.strip.gsub(/\s+/, "_").to_sym
 end
 
 Then(/^it should tell me "(.*?)"$/) do |expected_output|
@@ -29,7 +29,7 @@ end
 
 Given(/^I have created a character with a "(.*?)" and an invalid "(.*?)"$/) do |name, job|
   @name = name
-  @job = job
+  @job = job.downcase.strip.gsub(/\s+/, "_").to_sym
 end
 
 Then(/^it should print "(.*?)"$/) do |expected_output|
