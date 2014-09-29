@@ -58,11 +58,21 @@ def generate_character
   puts "Please choose a job for your character:"
   show_jobs
   job = get_job(gets.chomp)
-  character = Character.new(name, job)
-  @party.recruit(character)
-  puts "#{character.name} has joined your party."
+  @party.recruit(Character.new(name, job))
+  puts "#{character.name} the #{character.job} has joined your party."
   puts character.sheet
+
   puts "Would you like to create another character? y/n"
+  repeat(generate_character)
+
+end
+
+def repeat(option)
+
+  # Queries the user to repeat the last performed action.
+  # Input: Method.
+  # Output: Method.
+
   repeat = gets.chomp
   while not ['y', 'n'].include?(repeat)
     puts "Sorry, I don't understand that option."
@@ -70,10 +80,11 @@ def generate_character
     repeat = gets.chomp
   end
   if repeat == 'y'
-    generate_character
+    option
   else
     return
   end
+
 end
 
 def generate_party
