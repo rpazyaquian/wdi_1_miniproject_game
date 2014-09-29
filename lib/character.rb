@@ -8,13 +8,13 @@ class Character
     if name.gsub(/\s+/, "").empty? == false
       @name = name
     else
-      @name = "Invalid character name."
+      @name = :invalid_name
     end
 
     if self.starting_jobs.include?(job)
       @job = job
     else
-      @job = "Job does not exist."
+      @job = :invalid_job
     end
   end
 
