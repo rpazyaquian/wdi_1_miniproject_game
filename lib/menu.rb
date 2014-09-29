@@ -1,5 +1,8 @@
 class Menu
 
+  # Okay, I'm gonna need some advice on this.
+  # I'm not really sure it's working correctly...
+
   def initialize(options)
 
     # Creates options for a menu.
