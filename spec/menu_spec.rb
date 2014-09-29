@@ -79,6 +79,10 @@ describe Menu do
       expect(@menu.choose("Say hello")).to eq "Hello!"
     end
 
+    it "returns an error if a choice is not valid" do
+      expect(@menu.choose('Invalid option')).to eq :invalid_option
+    end
+
     it "invokes other menus as actions" do
 
       another_menu = {

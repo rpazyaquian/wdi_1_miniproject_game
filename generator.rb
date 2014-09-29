@@ -5,6 +5,23 @@ require_relative 'lib/party'
 # "This menu method is enormous - it would be good to break it up into smaller methods.
 # Possibly a Menu class could be useful here."
 
+top_menu_options = {
+  :create_party => {
+    text: 'Create a party',
+    action: create_party
+  },
+  :create_character => {
+    text: 'Create a character',
+    action: create_character
+  },
+  :exit_generator => {
+    text: 'Exit generator',
+    action: exit_generator
+  }
+}
+
+top_menu = Menu.new(top_menu_options)
+
 # a menu class might not be a bad idea -
 # but what does a menu class look like?
 
@@ -53,7 +70,7 @@ def get_job(job)
 
 end
 
-def generate_character
+def create_character
   # Executes the character generator dialogue.
   # Input: none.
   # Output: none.
@@ -68,7 +85,7 @@ def generate_character
   puts character.sheet
 
   puts "Would you like to create another character? y/n"
-  repeat(generate_character)
+  repeat(create_character)
 
 end
 
@@ -92,7 +109,7 @@ def repeat(option)
 
 end
 
-def generate_party
+def create_party
 
   # Generates a new Party.
   # Input: none.
@@ -107,7 +124,7 @@ def generate_party
   @party = Party.new(name)
   puts "#{@party.name} has been formed."
   puts "Please add some characters."
-  generate_character
+  create_character
 end
 
 def menu_options
@@ -143,7 +160,7 @@ def menu_options
     if defined?(@party).nil?
       puts "You haven't made a party yet!"
     else
-      generate_character
+      create_character
     end
   elsif choice == 'q'
     puts "Goodbye!"
