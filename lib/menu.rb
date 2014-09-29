@@ -1,66 +1,45 @@
 class Menu
 
-  # Okay, I'm gonna need some advice on this.
-  # I'm not really sure it's working correctly...
-
   def initialize(options)
-
-    # Creates options for a menu.
-    # Input: Hash of hashes.
-    # Output: Menu.
-
     @options = options
-
-    # Choices translate the plain text of an option
-    # into its symbol representation.
-
     @choices = {}
+    @options.each do |option, data|
+      translation = { data[:text] => option }
+      @choices.merge!(translation)
+    end
+  end
 
-    options.each do |key, value|
-      @choices[value[:text]] = key
+  def run(option)
+    if @options.keys.include?(option)
+      action = @options[option][:action]
+      if action.is_a?(Proc) || action.is_a?(Method)
+        action.call
+      elsif action.is_a?(Menu)
+        action.prompt
+      else
+        action
+      end
+    else
+      :invalid_option
     end
 
   end
 
   def options
-
-    # Getter for options.
-    # Input: none.
-    # Output: Hash of hashes.
-
     @options
   end
 
-  def choices
-
-    # Getter for choices.
-    # Input: none.
-    # Output: Hash of hashes.
-
-    @choices
+  def add(option)
+    @options.merge!(option)
   end
 
-  def add(options)
-
-    # Adds a hash of options to the menu's options.
-    # Input: Hash.
-    # Output: Hash?
-
-    @options.merge!(options)
-
-    options.each do |key, value|
-      @choices[value[:text]] = key
-    end
+  def translate_string(input)
+    @choices[input]
   end
 
-  def choose(choice)
-
-    # Takes a plaintext option and executes its associated action.
-    # Input: String.
-    # Output: Method.
-
-    @choices.keys.include?(choice) ? @options[@choices[choice]][:action] : :invalid_option
-
+  def prompt
+    option = translate_string(STDIN.gets.chomp)
+    run(option)
   end
 
 end
