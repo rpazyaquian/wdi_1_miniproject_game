@@ -2,6 +2,11 @@ require 'pry'
 require_relative 'lib/character'
 require_relative 'lib/party'
 
+# "This menu method is enormous - it would be good to break it up into smaller methods.
+# Possibly a Menu class could be useful here."
+
+# a menu class might not be a bad idea -
+# but what does a menu class look like?
 
 def get_name(name)
 
@@ -111,6 +116,8 @@ def menu_options
   # Input: none.
   # Output: none.
 
+  # note: this badly needs refactoring
+
   puts "What would you like to do?"
   [
     'Create a (p)arty',
@@ -151,7 +158,6 @@ def menu
   # Output: none.
 
   puts "Welcome to my Fire Emblem party generator!"
-  @parties = []
   while true
     menu_options
   end
