@@ -30,7 +30,7 @@ class Character
     @job
   end
 
-  def starting_jobs
+  def self.starting_jobs
 
     # Defines valid starting job choices for a new character.
     # Input: none (self).
@@ -94,6 +94,14 @@ class Character
     # Outputs a formatted overview of the character information.
     # Input: none (self).
     # Output: String.
+
+    sheet = @stats.map do |stat, value|
+      if stat == :hp
+        "#{stat.upcase}: #{value}"
+      else
+        "#{stat.capitalize}: #{value}"
+      end
+    end
 
   end
 
