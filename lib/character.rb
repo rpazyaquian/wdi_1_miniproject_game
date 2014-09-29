@@ -103,6 +103,8 @@ class Character
       end
     end
 
+    sheet.join(", ")
+
   end
 
 end

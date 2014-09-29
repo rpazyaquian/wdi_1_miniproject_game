@@ -1,5 +1,7 @@
 require 'pry'
 require_relative 'lib/character'
+require_relative 'lib/party'
+
 
 def get_name(name)
 
@@ -40,14 +42,14 @@ def get_job(job)
 
   unless Character.starting_jobs.include?(job)
     puts "Sorry, that's not a valid job. Please try again."
-    puts jobs
+    show_jobs
     job = get_job(gets.chomp)
   end
 
 end
 
 def generate_character
-  # Executes the top-level generator menu.
+  # Executes the character generator dialogue.
   # Input: none.
   # Output: none.
 
@@ -57,6 +59,7 @@ def generate_character
   show_jobs
   job = get_job(gets.chomp)
   character = Character.new(name, job)
+  @party.recruit(character)
   puts "#{character.name} has joined your party."
   puts character.sheet
   puts "Would you like to create another character? y/n"
@@ -73,5 +76,74 @@ def generate_character
   end
 end
 
-puts "Welcome to my character generator!"
-generate_character
+def generate_party
+
+  # Generates a new Party.
+  # Input: none.
+  # Output: none.
+
+  puts "What would you like to name your party?"
+  name = gets.chomp
+  while name.gsub(/\s+/, "").empty?
+    puts "Sorry, your party has to have a valid name."
+    name = gets.chomp
+  end
+  @party = Party.new(name)
+  puts "#{@party.name} has been formed."
+  puts "Please add some characters."
+  generate_character
+end
+
+def menu_options
+
+  # Queries the user for menu options.
+  # Input: none.
+  # Output: none.
+
+  puts "What would you like to do?"
+  [
+    'Create a (p)arty',
+    'Generate a new (c)haracter',
+    '(Q)uit the generator'
+  ].each do |option|
+    puts option
+  end
+
+  choice = gets.chomp.downcase
+  while not %w(p c q).include?(choice)
+    puts "Sorry, that's not a valid menu option."
+    choice = gets.chomp.downcase
+  end
+
+  if choice == 'p'
+    if defined?(@party)
+      puts "You've already made a party called #{@party.name}."
+    else
+      generate_party
+    end
+  elsif choice == 'c'
+    if defined?(@party).nil?
+      puts "You haven't made a party yet!"
+    else
+      generate_character
+    end
+  elsif choice == 'q'
+    puts "Goodbye!"
+    exit(0)
+  end
+
+end
+
+def menu
+  # Top-level menu.
+  # Input: none.
+  # Output: none.
+
+  puts "Welcome to my Fire Emblem party generator!"
+  @parties = []
+  while true
+    menu_options
+  end
+end
+
+menu
